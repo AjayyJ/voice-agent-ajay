@@ -10,7 +10,7 @@
   var backendUrl = (config.backendUrl || "").trim();
   const company = config.company || { name: "Zepmed", website: "https://zepmed.org" };
   var isLocal = /^(localhost|127\.0\.0\.1)$/.test(typeof location !== "undefined" && location.hostname);
-  if (!backendUrl && !isLocal) backendUrl = "/functions/chat";
+  if (!backendUrl && !isLocal) backendUrl = "/api/chat";
 
   const chatBox = document.getElementById("chatBox");
   const input = document.getElementById("input");
@@ -74,7 +74,7 @@
   }
 
   function getBotResponse(userText) {
-    var chatUrl = backendUrl || (isLocal ? "" : "/functions/chat");
+    var chatUrl = backendUrl || (isLocal ? "" : "/api/chat");
     if (chatUrl) {
       var payload = { message: userText };
       if (vapiConfig.assistantId) payload.assistantId = vapiConfig.assistantId;
@@ -243,7 +243,7 @@
       runVoiceInit();
       return;
     }
-    fetch("/functions/voice-config").then(function (r) { if (r.ok) return r.json(); if (r.status === 404) return fetch("/functions/config").then(function (r2) { return r2.ok ? r2.json() : {}; }); return {}; }).then(function (d) {
+    fetch("/api/voice-config").then(function (r) { if (r.ok) return r.json(); if (r.status === 404) return fetch("/api/config").then(function (r2) { return r2.ok ? r2.json() : {}; }); return {}; }).then(function (d) {
         if (d && d.vapi) {
           window.ZEPMED_CONFIG.vapi = d.vapi;
           vapiConfig = d.vapi;
