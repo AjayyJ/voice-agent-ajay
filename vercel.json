@@ -1,8 +1,7 @@
 {
-  "version": 2,
-  "builds": [
-    { "src": "api/chat.js", "use": "@vercel/node" },
-    { "src": "api/config.js", "use": "@vercel/node" },
-    { "src": "api/voice-config.js", "use": "@vercel/node" }
-  ]
+  "functions": {
+    "functions/*.js": {
+      "runtime": "nodejs18.x"
+    }
+  }
 }
