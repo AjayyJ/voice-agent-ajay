@@ -2,6 +2,7 @@
  * Vercel serverless: return public config for the frontend (voice keys).
  * Set VAPI_PUBLIC_KEY and VAPI_ASSISTANT_ID in Vercel Environment Variables.
  */
+// force redeploy
 module.exports = async function handler(req, res) {
   res.setHeader("Access-Control-Allow-Origin", req.headers.origin || "*");
   res.setHeader("Cache-Control", "no-store, max-age=0");
