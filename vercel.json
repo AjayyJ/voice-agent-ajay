@@ -1,9 +1,8 @@
 {
   "version": 2,
-  "functions": {
-    "api/*.js": {
-      "memory": 128,
-      "maxDuration": 10
-    }
-  }
+  "builds": [
+    { "src": "api/chat.js", "use": "@vercel/node" },
+    { "src": "api/config.js", "use": "@vercel/node" },
+    { "src": "api/voice-config.js", "use": "@vercel/node" }
+  ]
 }
